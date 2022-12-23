@@ -77,10 +77,12 @@ def nullraum(A_a):
 
 v0= np.array([1/12,1/12,1/12,1/12,1/12,1/12,1/12,1/12,1/12,1/12,1/12,1/12])
 
+print("Eigenvektor zu a_1 mit Potenzmethode:")
 t1_start = perf_counter()
 print(potenzmethode(v0, A_a(0.1)))
 t1_stop = perf_counter()
 
+print("Eigenvektor zu a_1 mit Nullraum_Berechnung:")
 t2_start = perf_counter()
 print(nullraum(A_a(0.1)))
 t2_stop = perf_counter()
