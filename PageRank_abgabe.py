@@ -92,3 +92,73 @@ print("Nullraum Laufzeit: ", t2_stop - t2_start)
 #Zum Beispiel:
 #Potenzmethode Laufzeit:  0.016485299999999925
 #Nullraum Laufzeit:  0.0034246
+
+# Ranking der Seiten von der Wichtigsten zur unwichtigsten Seite:
+
+ev_a1 = potenzmethode(v0, A_a(0.1))
+ev_a2 = potenzmethode(v0, A_a(0.3))
+ev_a3 = potenzmethode(v0, A_a(0.6))
+
+L_1 = []
+for i in range (0, 12):
+    L_1.append(ev_a1[i])
+
+L_2 = []
+for i in range (0, 12):
+    L_2.append(ev_a2[i])
+
+L_3 = []
+for i in range (0, 12):
+    L_3.append(ev_a3[i])
+
+# Ranking erstellen:
+max_wert_1 = max(L_1)
+max_index_1 = L_1.index(max_wert_1)
+
+max_wert_2 = max(L_2)
+max_index_2 = L_2.index(max_wert_2)
+
+max_wert_3 = max(L_3)
+max_index_3 = L_3.index(max_wert_3)
+
+ranking_1 = np.full([12], 0)
+ranking_2 = np.full([12], 0)
+ranking_3 = np.full([12], 0)
+for i in range(0,12): 
+    max_wert_1 = max(L_1)
+    max_index_1 = L_1.index(max_wert_1)
+    ranking_1[i] = max_index_1
+
+    max_wert_2 = max(L_2)
+    max_index_2 = L_2.index(max_wert_2)
+    ranking_2[i] = max_index_2
+
+    max_wert_3 = max(L_3)
+    max_index_3 = L_3.index(max_wert_3)
+    ranking_3[i] = max_index_3
+
+    L_1[max_index_1] = 0
+    L_2[max_index_2] = 0
+    L_3[max_index_3] = 0
+
+print("Das Ranking fuer a_1 der Seiten W1,...,W12 ist:")
+for i in range(0,12):
+    print("W_", ranking_1[i]+1)
+
+print("Eigenvektor zu a_2 mit Potenzmethode:")
+print(potenzmethode(v0, A_a(0.3)))
+print("Eigenvektor zu a_2 mit Nullraum_Berechnung:")
+print(nullraum(A_a(0.3)))
+
+print("Das Ranking fuer a_2 der Seiten W1,...,W12 ist:")
+for i in range(0,12):
+    print("W_", ranking_2[i]+1)
+
+print("Eigenvektor zu a_3 mit Potenzmethode:")
+print(potenzmethode(v0, A_a(0.5)))
+print("Eigenvektor zu a_3 mit Nullraum_Berechnung:")
+print(nullraum(A_a(0.5)))
+
+print("Das Ranking fuer a_3 der Seiten W1,...,W12 ist:")
+for i in range(0,12):
+    print("W_", ranking_3[i]+1)
